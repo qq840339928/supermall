@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 //1.安装插件
 Vue.use(VueRouter)
 //2.创建router
-const routes = [
+const routers  = [
     {
       path: "/",
       redirect: "/home"
@@ -11,7 +11,7 @@ const routes = [
     // {
     //   path: "/home",
     //   name: "home",
-    //   component: () => import("../views/home/Home.vue")
+    //   component: () => import("views/home/Home.vue")
     // },
     // {
     //   path: "/category",

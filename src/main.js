@@ -3,6 +3,5 @@ import Vue from 'vue'
 import router from './router/index'
 new Vue({
     render: h => h(App),
-    router,
-    store
+    router
   }).$mount("#app");
