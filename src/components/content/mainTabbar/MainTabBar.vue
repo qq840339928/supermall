@@ -44,20 +44,21 @@ export default {
           _img: require("assets/img/tabbar/fenlei.svg"),
           _imgHover: require("assets/img/tabbar/fenlei_hover.svg"),
           _text: "分类",
-          _color: "blue"
+          _color: "deepPink"
         },
         {
           _path: "/cart",
           _img: require("assets/img/tabbar/baoshuicang.svg"),
           _imgHover: require("assets/img/tabbar/baoshuicang_hover.svg"),
           _text: "购物车",
-          _color: "green"
+          _color: "deepPink"
         },
         {
           _path: "/profile",
           _img: require("assets/img/tabbar/wo.svg"),
           _imgHover: require("assets/img/tabbar/wo_hover.svg"),
-          _text: "我的"
+          _text: "我的",
+          _color: "deepPink"
         }
       ]
     };
