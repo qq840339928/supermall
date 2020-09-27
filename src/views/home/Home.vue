@@ -10,10 +10,23 @@
 
 <script>
 import NavBar from 'components/common/navbar/NavBar.vue'
+import { getHomeMultiData } from 'network/home.js'
 export default {
   name: "home",
   components: {
     NavBar
+  },
+  data () {
+    return{
+      banners: {}
+    }
+  },
+  created() {
+    // 请求数据
+    getHomeMultiData().then(res => {
+      debugger
+      console.log(res)
+    })
   }
 }
 </script>
