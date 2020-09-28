@@ -1,7 +1,6 @@
 import { request } from "./request";
 
 export function getHomeMultiData() {
-  debugger
   return request({
     url: "/home/multidata",
     method: "GET"

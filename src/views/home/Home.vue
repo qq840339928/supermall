@@ -5,27 +5,37 @@
         购物街
       </template>
     </NavBar>
+    <!-- 轮播图 -->
+    <HomeSwiper :sun_banners = 'banners'/>
+    <!--recommend部分就几个图片 -->
+    <HomeRecommends :sun_recommends = 'recommend'/>
   </div>
 </template>
 
 <script>
 import NavBar from 'components/common/navbar/NavBar.vue'
+import HomeSwiper from './childComps/HomeSwiper.vue'
+import HomeRecommends from './childComps/HomeRecommends.vue'
+
 import { getHomeMultiData } from 'network/home.js'
 export default {
   name: "home",
   components: {
-    NavBar
+    NavBar,
+    HomeSwiper,
+    HomeRecommends
   },
   data () {
     return{
-      banners: {}
+      banners: [],
+      recommend: []
     }
   },
   created() {
     // 请求数据
     getHomeMultiData().then(res => {
-      debugger
-      console.log(res)
+      this.banners = res.data.banner.list
+      this.recommend = res.data.recommend.list
     })
   }
 }

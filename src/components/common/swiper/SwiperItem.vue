@@ -10,11 +10,11 @@ export default {
   },
   mounted() {
     // 下方防止在网速慢的情况下，slide的count数不准确
-    this.$store.commit("slideCountChange", 1);
-    if (this.$store.state.slideCount == this.count) {
-      this.$emit("slideEven");
-      this.$store.commit("slideCountChange", -this.count);
-    }
+    // this.$store.commit("slideCountChange", 1);
+    // if (this.$store.state.slideCount == this.count) {
+    //   this.$emit("slideEven");
+    //   this.$store.commit("slideCountChange", -this.count);
+    // }
   }
 };
 </script>
