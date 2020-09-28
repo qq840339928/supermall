@@ -1,10 +1,6 @@
 <template>
-  <div class="goods">
-    <goods-list-item
-      v-for="(item, index) in sun_goods"
-      :goodsItem="item"
-      :key="index"
-    ></goods-list-item>
+  <div class="goodsList">
+    <goods-list-item v-for="(item, index) in goodsList" :key="index" :goodsListItem="item"></goods-list-item>
   </div>
 </template>
 <script>
@@ -14,13 +10,16 @@ export default {
     GoodsListItem
   },
   props: {
-    sun_goods: Array
-  }
+    goodsList: {
+      type: Object,
+      default: {}
+    }
+  },
 };
 </script>
 
 <style scoped>
-.goods {
+.goodsList {
   display: flex;
   flex-wrap: wrap;
   width: 100%;

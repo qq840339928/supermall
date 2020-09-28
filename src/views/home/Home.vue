@@ -15,7 +15,7 @@
     <!-- 流行-新款-精选 -->
     <TabControl :titles="['流行', '新款', '精选']"/>
     <!-- 详细数据展示 -->
-
+    <goodsList :goodsList="goods['new'].data"></goodsList>
     <ul>
       <li>1</li>
       <li>2</li>
@@ -129,6 +129,7 @@ import HomeRecommends from './childComps/HomeRecommends.vue'
 import HomeFeature from './childComps/HomeFeature'
 
 import TabControl from 'components/content/tabControl/TabControl'
+import GoodsList from 'components/content/goods/GoodsList'
 
 import { getHomeMultiData, getHomeGoods } from 'network/home.js'
 export default {
@@ -138,7 +139,8 @@ export default {
     HomeSwiper,
     HomeRecommends,
     HomeFeature,
-    TabControl
+    TabControl,
+    GoodsList
   },
   data () {
     return{
@@ -197,7 +199,9 @@ export default {
   padding-top: 44px;
 }
 .HomeFeatureTopHr{
-  background-color: grey;
+  display: block;
+  border: 0;
+  background-color:darkgray;
   height: 15px;
 }
 </style>
