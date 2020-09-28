@@ -18,9 +18,9 @@ export default {
 <style scoped>
 .homeRecommends{
   display: flex;
+  justify-content:space-between;
 }
 .homeRecommendsItem{
-  flex: 1;
   text-align: center;
 }
 .homeRecommendsItemImg{

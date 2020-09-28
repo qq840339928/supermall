@@ -7,6 +7,7 @@ export function getHomeMultiData() {
   });
 }
 
+
 export function getHomeGoods(type, page) {
   return request({
     url: "/home/data",
