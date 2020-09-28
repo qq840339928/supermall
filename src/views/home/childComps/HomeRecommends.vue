@@ -1,8 +1,10 @@
 <template>
   <div class="homeRecommends">
     <div v-for="(item, index) in sun_recommends" :key="index" class="homeRecommendsItem">
-      <img :src="item.image" alt="item.title" class="homeRecommendsItemImg">
-      <div>{{item.title}}</div>
+      <a :href="item.link">
+        <img :src="item.image" alt="item.title" class="homeRecommendsItemImg">
+        <div>{{item.title}}</div>
+      </a>
     </div>
   </div>
 </template>
