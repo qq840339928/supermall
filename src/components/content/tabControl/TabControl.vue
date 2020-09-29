@@ -24,6 +24,7 @@ export default {
      */
     setTabControl(index) {
       this.currentIndex = index
+      this.$emit('setCurrentIndex', index)
     }
   }
 };

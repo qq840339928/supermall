@@ -13,9 +13,9 @@
     <!--流行-->
     <HomeFeature/>
     <!-- 流行-新款-精选 -->
-    <TabControl :titles="['流行', '新款', '精选']"/>
+    <TabControl :titles="['流行', '新款', '精选']" @setCurrentIndex="setCurrentIndex"/>
     <!-- 详细数据展示 -->
-    <goodsList :goodsList="goods['new'].data"></goodsList>
+    <goodsList :goodsList="goods[currentType].data"></goodsList>
     <ul>
       <li>1</li>
       <li>2</li>
@@ -150,7 +150,8 @@ export default {
         'pop': {data: [], page: 1}, // 接口page穿0没有数据，第一页默认从1开始
         'new': {data: [], page: 1},
         'sell': {data: [], page: 1},
-      }
+      },
+      currentType: 'pop'
     }
   },
   created() {
@@ -163,6 +164,19 @@ export default {
     this.getFirstHomeGoods()
   },
   methods: {
+    setCurrentIndex(index) {
+      switch (index) {
+        case 0:
+          this.currentType = 'pop'
+          break;
+        case 1:
+          this.currentType = 'new'
+          break;
+        case 2:
+          this.currentType = 'sell'
+          break;
+      }
+    },
     /**
      * 第一次请求home的详细数据，请求流行，新款，精选三类的第一页数据
      */
