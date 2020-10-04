@@ -9,28 +9,39 @@
 import BScroll from "better-scroll"
 
 export default {
+  props: {
+    probeType: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
       scroll: null
-    };
+    }
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.wrapper, {
       click: true,
-      probeType: 3,
+      probeType: this.probeType,
       pullUpLoad: true
     })
-    console.log(this.scroll)
     this.scroll.on('scroll', (position) => {
+      this.$emit('scroll', position.y)
     })
     this.scroll.on('pullingUp', () => {
-        console.log('加载更多')
-        this.scroll.finishPullUp()
+      this.$emit('pullingUp')
     })
   },
   methods: {
     scrollToTop () {
-      this.scroll.scrollTo(0, 0)
+      this.scroll.scrollTo(0, 0, 300)
+    },
+    /**
+     * 结束上拉加载更多
+     */
+    finishPullUp () {
+      this.scroll.finishPullUp()
     }
   },
 };

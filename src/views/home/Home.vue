@@ -5,7 +5,7 @@
         购物街
       </template>
     </NavBar>
-    <Scroll class="wrapper" ref="scroll">
+    <Scroll class="wrapper" ref="scroll" @scroll = 'scroll' @pullingUp="pullingUp">
       <!-- 轮播图 -->
       <HomeSwiper :sun_banners = 'banners' class="home_HomeSwiper"/>
       <!--推荐recommend部分就几个图片 -->
@@ -19,7 +19,10 @@
       <goodsList :goodsList="goods[currentType].data"></goodsList>
     </Scroll>
     <back-top 
+      v-show="isShowBackToTop"
       @backToTop = 'backToTop'
+      :probeType = '3'
+      
     />
   </div>
 </template>
@@ -57,7 +60,8 @@ export default {
         'new': {data: [], page: 1},
         'sell': {data: [], page: 1},
       },
-      currentType: 'pop'
+      currentType: 'pop',
+      isShowBackToTop: false
     }
   },
   created() {
@@ -96,8 +100,9 @@ export default {
      */
     getHomeGoods(type, page) {
       getHomeGoods(type, page).then(res => {
-        this.goods[type].data = res.data.list
+        this.goods[type].data.push(...res.data.list)
         this.goods[type].page = ++page
+        this.$refs.scroll.finishPullUp()
       })
     },
     /**
@@ -105,6 +110,18 @@ export default {
      */
     backToTop () {
       this.$refs.scroll.scrollToTop()
+    },
+    /**
+     * 设置是否显示返回顶部按钮
+     */
+    scroll (positionY) {
+      this.isShowBackToTop = -(positionY) > 1000
+    },
+    /**
+     * 上拉加载更多
+     */
+    pullingUp () {
+      this.getHomeGoods(this.currentType, this.goods[this.currentType].page)
     }
   }
 }
