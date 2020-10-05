@@ -1,5 +1,5 @@
 <template>
-  <div class="goodsListItem">
+  <div class="goodsListItem" @click="skipToDetail">
     <div class="goodsListItemImg">
       <img :src="goodsListItem.show.img" alt="" @load="imgFinish" />
     </div>
@@ -22,6 +22,12 @@ export default {
   methods: {
     imgFinish () {
       this.$bus.$emit('goodsListItemImgLoadFinish')
+    },
+    /**
+     * 跳转到详情页面
+     */
+    skipToDetail () {
+      this.$router.push('/detail/' + this.goodsListItem.iid)
     }
   }
 }

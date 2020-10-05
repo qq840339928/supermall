@@ -40,7 +40,7 @@ import Scroll from 'components/common/scroll/Scroll'
 import BackTop from 'components/content/backTop/BackTop'
 
 import { getHomeMultiData, getHomeGoods } from 'network/home.js'
-import { debounce } from "common/utils.js";
+import { deBounce } from "common/utils.js";
 export default {
   name: "home",
   components: {
@@ -78,7 +78,7 @@ export default {
     this.getFirstHomeGoods()
   },
   mounted() {
-    let refresh = debounce(this.$refs.scroll.refresh, 10)
+    let refresh = deBounce(this.$refs.scroll.refresh, 10)
     this.$bus.$on('goodsListItemImgLoadFinish', () => {
       refresh()
     })
