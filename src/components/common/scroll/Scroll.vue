@@ -13,6 +13,10 @@ export default {
     probeType: {
       type: Number,
       default: 0
+    },
+    pullUpLoad: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -24,14 +28,18 @@ export default {
     this.scroll = new BScroll(this.$refs.wrapper, {
       click: true,
       probeType: this.probeType,
-      pullUpLoad: true
+      pullUpLoad: this.pullUpLoad
     })
-    this.scroll.on('scroll', (position) => {
-      this.$emit('scroll', position.y)
-    })
-    this.scroll.on('pullingUp', () => {
-      this.$emit('pullingUp')
-    })
+    if (this.probeType === 2 || this.probeType === 3) {
+      this.scroll.on('scroll', (position) => {
+        this.$emit('scroll', position.y)
+      })
+    }
+    if (this.pullUpLoad) {
+      this.scroll.on('pullingUp', () => {
+        this.$emit('pullingUp')
+      })
+    }
   },
   methods: {
     scrollToTop () {
@@ -42,6 +50,12 @@ export default {
      */
     finishPullUp () {
       this.scroll.finishPullUp()
+    },
+    /**
+     * 刷新
+     */
+    refresh() {
+      this.scroll.refresh()
     }
   },
 };

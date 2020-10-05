@@ -1,7 +1,7 @@
 <template>
   <div class="goodsListItem">
     <div class="goodsListItemImg">
-      <img :src="goodsListItem.show.img" alt="" />
+      <img :src="goodsListItem.show.img" alt="" @load="imgFinish" />
     </div>
     <div class="goods_info">
       <p>{{ goodsListItem.title }}</p>
@@ -17,6 +17,11 @@ export default {
     goodsListItem: {
       type: Object,
       default: []
+    }
+  },
+  methods: {
+    imgFinish () {
+      this.$bus.$emit('goodsListItemImgLoadFinish')
     }
   }
 }

@@ -9,8 +9,8 @@
         >
           <template>
             <a :href="item.link"
-              ><img :src="item.image" alt=""
-            /></a>
+              ><img :src="item.image" alt="" @load="homeSwiperImgOnload" />
+              </a>
           </template>
         </swiper-item>
       </template>
@@ -22,7 +22,6 @@ import { Swiper, SwiperItem } from "components/common/swiper";
 export default {
   data() {
     return{
-
     }
   },
   props: {
@@ -30,6 +29,12 @@ export default {
   },
   mounted() {},
   methods: {
+    /**
+     * 轮播图加载完成，用于判断tab的offsetTop
+     */
+    homeSwiperImgOnload() {
+      this.$emit('homeSwiperImgOnload')
+    }
   },
   components: {
     Swiper,
